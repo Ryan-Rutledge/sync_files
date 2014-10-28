@@ -1,0 +1,23 @@
+alias cd=' cd'
+alias clear=' clear'
+alias exit=' exit'
+
+alias ls=' ls --color=auto'
+alias dir=' dir --color=auto'
+alias vdir=' vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias ll=' ls -l'
+alias la=' ls -A'
+alias l=' ls -CF'
+
+alias vi='vi -p'
+alias vim='vim -p'
+alias gvim='gvim -p'
+alias play_cd='vlc -f /media/cdrom0 &'
+alias colemak='setxkbmap us -variant colemak'
+alias dvorak='setxkbmap us -variant dvorak'
+alias qwerty="setxkbmap us; xmodmap -e 'clear Lock' -e 'keycode 66 = BackSpace'"
+alias backLock="xmodmap -e 'clear Lock' -e 'keycode 66 = BackSpace'"
