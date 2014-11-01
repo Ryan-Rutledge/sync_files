@@ -161,12 +161,12 @@ nnoremap <leader>ss :set spell!<CR>
 			nnoremap <leader>n :tabnext<CR>
 			nnoremap <C-tab> :tabnext<CR>
 			inoremap <C-tab> <Esc>:tabnext<CR>
-			nnoremap <leader>tn :tabn<CR>
+			nnoremap <leader>tn :tabnext<CR>
 		" Prev
 			nnoremap <leader>p :tabprevious<CR>
 			nnoremap <C-S-tab> :tabprevious<CR>
 			inoremap <C-S-tab> <Esc>:tabprevious<CR>
-			nnoremap <leader>tp :tabp<CR>
+			nnoremap <leader>tp :tabprevious<CR>
 		" New
 			inoremap <C-t> <Esc>:tabnew<CR>
 			nnoremap <C-t> :tabnew<CR>
@@ -181,8 +181,7 @@ nnoremap <leader>ss :set spell!<CR>
 
 " Macros
 	" Yank all
-	let @y='ggVG"+Y'
-
+	let @y='ggVG"+Y``'
 
 " Toggle between relative and normal line numbers
 function! NumberToggle()
