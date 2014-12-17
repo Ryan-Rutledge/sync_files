@@ -112,6 +112,12 @@ nnoremap <leader>ss :set spell!<CR>
 	" Disable automatic comments
 		 autocmd FileType * setlocal formatoptions=""
 
+" Abbreviations
+	" Print current date
+	iabbrev <expr> DATE strftime("%d/%m/%Y")
+	" Print current time
+	iabbrev <expr> TIME strftime("%H:%M:%S")
+
 " Key mappings
 	let mapleader = '\'
 
@@ -150,6 +156,8 @@ nnoremap <leader>ss :set spell!<CR>
 		" Resizing viewports
 			nnoremap <C-UP> <C-W>+
 			nnoremap <C-DOWN> <C-W>-
+			nnoremap <C-LEFT> <C-W><
+			nnoremap <C-RIGHT> <C-W>>
 
 	" Tabs
 		set tabpagemax=100
