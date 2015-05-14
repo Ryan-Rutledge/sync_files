@@ -102,12 +102,14 @@ nnoremap <leader>ss :set spell!<CR>
 		" C++
 			autocmd FileType cpp nnoremap <F5> :!g++ --o "%:p:r" "%:p" && "%:p:r.out"<CR>
 		" HTML
-			autocmd FileType html nnoremap <F5> :!chromium "%:p"<CR>
+			autocmd FileType html nnoremap <F5> :!google-chrome "%:p"<CR>
 		" Java
 			autocmd FileType java nnoremap <F5> :!javac "%:p" && java -cp "%:p:h" "%:t:r"<CR>
 		" Python
 			autocmd FileType python nnoremap <F5> :!python3 "%:p"<CR>
 			autocmd FileType python set expandtab
+		" Sass
+			autocmd FileType sass nnoremap <F5> :!sass "%:p" > "%:p:r.css"<CR>
 
 	" Disable automatic comments
 		 autocmd FileType * setlocal formatoptions=""
