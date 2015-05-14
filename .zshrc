@@ -14,6 +14,7 @@ zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 
 autoload -U colors && colors autoload -U promptinit
+autoload -U zmv
 autoload -Uz compinit
 compinit
 
