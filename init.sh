@@ -42,25 +42,48 @@ function createlink {
 
 # Install programs
 if [[ ${1} == '--install' ]]; then
-	sudo apt-get update
-	sudo apt-get dist-upgrade
+	# If apt-get is installed
+	if [ -f "$(which apt-get 2> /dev/null)" ]; then
+		sudo apt-get update
+		sudo apt-get dist-upgrade
 
-	# Always install
-	sudo apt-get install elinks
-	sudo apt-get install gpm
-	sudo apt-get install screen
-	sudo apt-get install zsh && chsh -s $(which zsh)
+		# Always install
+		sudo apt-get install elinks
+		sudo apt-get install gpm
+		sudo apt-get install screen
+		sudo apt-get install zsh && chsh -s $(which zsh)
 
-	if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
-		sudo apt-get install conky
-		sudo apt-get install gimp
-		sudo apt-get install idle3
-		sudo apt-get install inkscape
-		sudo apt-get install synapse
-		sudo apt-get install vim-gtk
-	else
-		sudo apt-get install python3
-		sudo apt-get install vim
+		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
+			sudo apt-get install conky
+			sudo apt-get install gimp
+			sudo apt-get install idle3
+			sudo apt-get install inkscape
+			sudo apt-get install synapse
+			sudo apt-get install vim-gtk
+		else
+			sudo apt-get install python3
+			sudo apt-get install vim
+		fi
+	# If pacman is installed
+	elif [ -f "$(which pacman 2> /dev/null)" ]; then
+		sudo pacman -Syu
+
+		# Always install
+		sudo pacman -S elinks
+		sudo pacman -S gpm
+		sudo pacman -S screen
+		sudo pacman -S zsh && chsh -s $(which zsh)
+
+		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
+			sudo pacman -S conky
+			sudo pacman -S gimp
+			sudo pacman -S inkscape
+			sudo pacman -S synapse
+			sudo pacman -S gvim
+		else
+			sudo apt-get install python
+			sudo apt-get install vim
+		fi
 	fi
 
 # Generate symbolic links
