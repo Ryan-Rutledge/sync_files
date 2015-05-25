@@ -92,6 +92,9 @@ elif [[ ${1} == '--links' ]]; then
 		mkdir -p ~/j64-802-user/config
 		createlink "qtide.cfg" "j64-802-user/config/"
 		createlink "style.cfg" "j64-802-user/config/"
+
+		mkdir -p ~/.config/openbox
+		createlink "rc.xml" ".config/openbox/"
 	fi
 else
 	echo 'Usage: init.sh [--install | --links] [gui]'
