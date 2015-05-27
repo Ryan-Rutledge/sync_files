@@ -1,0 +1,77 @@
+background no
+use_xft yes
+xftfont ubuntu mono:size=10
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent no
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_colour 111111
+double_buffer yes
+minimum_size 1 1
+maximum_width 280
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color 86c113
+default_shade_color 000000
+default_outline_color gray
+alignment tr
+gap_x 12
+gap_y 42
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+color1 gray
+color2 white
+color3 orange
+##############################################
+#  Output
+##############################################
+TEXT
+${font ubuntu mono:bold:size=10}SYSTEM ${color2}${hr 2}${color}
+${font}$sysname $kernel $alignr $machine
+Host:$alignr$nodename
+Uptime:$alignr$uptime
+
+CPU: $alignr${cpu cpu0}%
+${color1}${voffset -5}${cpugraph cpu0 24,279 gray white}
+${color2}${voffset -11}${cpubar cpu0}${color} 
+RAM: $alignr$mem/$memmax
+${color1}${voffset -5}${memgraph 24,279 gray white}
+${color2}${voffset -11}$membar${color}
+
+${font ubuntu mono:bold:size=10}TOP PROCESSES ${color2}${hr 2}${color}${font}
+${color2}${top_mem pid 1} ${color}${top_mem name 1}${alignr}${color3}${top_mem mem_res 1} ${color1}${top_mem mem 1}%
+${color2}${top_mem pid 2} ${color}${top_mem name 2}${alignr}${color3}${top_mem mem_res 2} ${color1}${top_mem mem 2}%
+${color2}${top_mem pid 3} ${color}${top_mem name 3}${alignr}${color3}${top_mem mem_res 3} ${color1}${top_mem mem 3}%
+${color2}${top_mem pid 4} ${color}${top_mem name 4}${alignr}${color3}${top_mem mem_res 4} ${color1}${top_mem mem 4}%
+${color2}${top_mem pid 5} ${color}${top_mem name 5}${alignr}${color3}${top_mem mem_res 5} ${color1}${top_mem mem 5}%
+${color2}${top_mem pid 6} ${color}${top_mem name 6}${alignr}${color3}${top_mem mem_res 6} ${color1}${top_mem mem 6}%
+${color2}${top_mem pid 7} ${color}${top_mem name 7}${alignr}${color3}${top_mem mem_res 7} ${color1}${top_mem mem 7}%
+${color2}${top_mem pid 8} ${color}${top_mem name 8}${alignr}${color3}${top_mem mem_res 8} ${color1}${top_mem mem 8}%
+${color2}${top_mem pid 9} ${color}${top_mem name 9}${alignr}${color3}${top_mem mem_res 9} ${color1}${top_mem mem 9}%
+
+${color}${font ubuntu mono:bold:size=10}SHORTCUT KEYS ${color2}${hr 2}${color}
+${font}
+Super+space$alignr Main Menu
+Super+t$alignr Terminal
+Super+f$alignr File Manager
+Super+e$alignr Editor
+Super+w$alignr Web Browser
+Super+q$alignr Force Quit
+Super+r$alignr Read the DOC
+Alt+F3$alignr Dmenu
+
+=======
+Super+a$alignr Toggle Maximize
+Super+h$alignr Toggle Horizontal
+Super+v$alignr Toggle Vertical
+Super+c$alignr Move to Center
+Super+Arrow$alignr Move
+Alt+F3$alignr Dmenu
+Alt+Super+Arrow$alignr Resize
