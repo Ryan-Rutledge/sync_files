@@ -71,7 +71,9 @@ if [[ ${1} == '--install' ]]; then
 			sudo apt-get install gimp
 			sudo apt-get install idle3
 			sudo apt-get install inkscape
+			sudo apt-get install lxterminal
 			sudo apt-get install openbox
+			sudo apt-get install redshift
 			sudo apt-get install synapse
 			sudo apt-get install vim-gtk
 			sudo apt-get install xcompmgr
@@ -97,7 +99,9 @@ if [[ ${1} == '--install' ]]; then
 			sudo pacman -S gimp
 			sudo pacman -S gvim
 			sudo pacman -S inkscape
+			sudo pacman -S lxterminal
 			sudo pacman -S openbox
+			sudo pacman -S redshift
 			sudo pacman -S synapse
 			sudo pacman -S xcompmgr
 		else
