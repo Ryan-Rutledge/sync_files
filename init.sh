@@ -78,6 +78,7 @@ if [[ ${1} == '--install' ]]; then
 			sudo apt-get install synapse
 			sudo apt-get install thunar
 			sudo apt-get install tint2
+			sudo apt-get install ttf-ubuntu-font-family
 			sudo apt-get install vim-gtk
 			sudo apt-get install xcompmgr
 		else
@@ -109,6 +110,7 @@ if [[ ${1} == '--install' ]]; then
 			sudo pacman -S synapse
 			sudo pacman -S thunar
 			sudo pacman -S tint2
+			sudo pacman -S ttf-ubuntu-font-family
 			sudo pacman -S xcompmgr
 		else
 			sudo pacman -S vim
