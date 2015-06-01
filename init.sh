@@ -158,7 +158,7 @@ elif [[ ${1} == '--links' ]]; then
 
 		# lxterminal
 		mkdir -p ~/.config/lxterminal
-		createLink "lxterminal.conf" ".config/lxterminal"
+		createlink "lxterminal.conf" ".config/lxterminal"
 
 		# Openbox
 		mkdir -p ~/.config/openbox
