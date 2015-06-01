@@ -125,7 +125,7 @@ elif [[ ${1} == '--links' ]]; then
 	# vim
 	createlink ".vimrc"
 	mkdir -p ~/.vim/colors
-	createlink "heroku-terminal.vim" "/.vim/colors/"
+	createlink "heroku-terminal.vim" ".vim/colors/"
 
 	# aliases
 	createlink ".shell_aliases"
@@ -174,7 +174,7 @@ elif [[ ${1} == '--links' ]]; then
 		createlink "ABClarity" "/usr/share/lxdm/themes/" 1
 
 		# GVim
-		createlink "heroku.vim" "/.vim/colors/"
+		createlink "heroku.vim" ".vim/colors/"
 	fi
 else
 	echo 'Usage: init.sh [--install | --links] [gui]'
