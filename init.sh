@@ -160,6 +160,10 @@ elif [[ ${1} == '--links' ]]; then
 		mkdir -p ~/.config/lxterminal
 		createlink "lxterminal.conf" ".config/lxterminal/"
 
+		# tint2
+		mkdir -p ~/.config/tint2
+		createlink "tint2rc" ".config/tint2/"
+
 		# Openbox
 		mkdir -p ~/.config/openbox
 		createlink "rc.xml" ".config/openbox/"
