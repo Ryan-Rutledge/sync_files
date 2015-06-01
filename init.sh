@@ -156,6 +156,10 @@ elif [[ ${1} == '--links' ]]; then
 		createlink "qtide.cfg" "j64-802-user/config/"
 		createlink "style.cfg" "j64-802-user/config/"
 
+		# lxterminal
+		mkdir -p ~/.config/lxterminal
+		createLink "lxterminal.conf" ".config/lxterminal"
+
 		# Openbox
 		mkdir -p ~/.config/openbox
 		createlink "rc.xml" ".config/openbox/"
