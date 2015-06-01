@@ -14,6 +14,10 @@ ABClarity is an altered form of [ABDojo](http://rederik75.deviantart.com/art/LXD
 
 I am using [Any Color You Like](http://pobtott.deviantart.com/art/Any-Color-You-Like-175624910) to style my icons.
 
+## Vim
+
+The [g]vim colorscheme is [Heroku](https://github.com/pope/vim-heroku)
+
 ## Conky
 
 Quotes were aquired from [brainyquote.com](http://www.brainyquote.com/)
