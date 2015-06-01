@@ -11,31 +11,42 @@ popd > /dev/null
 
 # Creates a symbolic link within the home directory
 # $1	Name of file
-# $2	Path within home directory (defaults to home)
+# $2	Path (within home directory. Default value is home)
+# $3	If true, uses absolute directory
 function createlink {
+	# If using absolute
+	if [ -n "${3}" ]; then
+		pre=""
+	else
+		pre=~/
+	fi
+
+	oldfile="${basedir}/${1}"
+	newfile="${pre}${2}${1}"
+
 	# If link already exists
-	if [ -h ~/"${2}${1}" ]; then
-		echo -e "\033[0;33msymbolic link ~/${2}${1} already exists\033[0;00m"
+	if [ -h "${newfile}" ]; then
+		echo -e "\033[0;33msymbolic link ${newfile} already exists\033[0;00m"
 	else
 		# Set default variable
 		local answer='y'
 
 		# If file already exists
-		if [ -e ~/"${2}${1}" ]; then
+		if [ -e "${newfile}"  ]; then
 			# Ask user if it should be replaced
-			echo -en "\n\033[0;31m~/${2}${1} already exists. Do you want to replace it? (y|n) \033[0;00m"
+			echo -en "\n\033[0;31m${newfile} already exists. Do you want to replace it? (y|n) \033[0;00m"
 			read answer
 		fi
 
 		# If permission was given to replace file
 		if [ $answer == 'y' -o $answer == 'Y' ]; then
 			# Remove file if it already exists
-			rm -f ~/"${2}${1}"
+			sudo rm -f "${newfile}"
 
 			# Create symbolic link
-			ln -s "${basedir}/${1}" ~/"${2}${1}" && echo -e "\e[0;32m${1} linked\e[0;00m"
+			sudo ln -s "${oldfile}" "${newfile}" && echo -e "\e[0;32m${1} linked\e[0;00m"
 		else
-			echo -e ${2}"${1} was not linked"
+			echo -e "${2}${1} was not linked"
 		fi 
 	fi
 }
@@ -48,6 +59,7 @@ if [[ ${1} == '--install' ]]; then
 		sudo apt-get dist-upgrade
 
 		# Always install
+		sudo apt-get install cowsay
 		sudo apt-get install elinks
 		sudo apt-get install gpm
 		sudo apt-get install screen
@@ -58,8 +70,10 @@ if [[ ${1} == '--install' ]]; then
 			sudo apt-get install gimp
 			sudo apt-get install idle3
 			sudo apt-get install inkscape
+			sudo apt-get install openbox
 			sudo apt-get install synapse
 			sudo apt-get install vim-gtk
+			sudo apt-get install xcompmgr
 		else
 			sudo apt-get install python3
 			sudo apt-get install vim
@@ -69,20 +83,23 @@ if [[ ${1} == '--install' ]]; then
 		sudo pacman -Syu
 
 		# Always install
+		sudo pacman -S cowsay
 		sudo pacman -S elinks
 		sudo pacman -S gpm
+		sudo pacman -S python
 		sudo pacman -S screen
 		sudo pacman -S zsh && chsh -s $(which zsh)
 
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
 			sudo pacman -S conky
 			sudo pacman -S gimp
-			sudo pacman -S inkscape
-			sudo pacman -S synapse
 			sudo pacman -S gvim
+			sudo pacman -S inkscape
+			sudo pacman -S openbox
+			sudo pacman -S synapse
+			sudo pacman -S xcompmgr
 		else
-			sudo apt-get install python
-			sudo apt-get install vim
+			sudo pacman -S vim
 		fi
 	fi
 
@@ -93,6 +110,8 @@ elif [[ ${1} == '--links' ]]; then
 
 	# vim
 	createlink ".vimrc"
+	mkdir -p ~/.vim/colors
+	createlink "heroku-terminal.vim" "/.vim/colors/"
 
 	# aliases
 	createlink ".shell_aliases"
@@ -100,6 +119,9 @@ elif [[ ${1} == '--links' ]]; then
 	# elinks
 	mkdir -p ~/.elinks/
 	createlink "elinks.conf" ".elinks/"
+	
+	# Miscellaneous
+	mkdir -p ~/extra
 
 	if [[ ${2} == 'gui' ||  ${2} == 'GUI' ]] ; then
 		# python
@@ -109,15 +131,31 @@ elif [[ ${1} == '--links' ]]; then
 		createlink "config-main.cfg" ".idlerc/"
 
 		# conky
+		mkdir -p ~/Scripts
 		createlink ".conkyrc"
+		createlink "deadbeefProgress.sh" "Scripts/"
+		createlink "getQuote.sh" "Scripts/"
+		createlink "quotes" "extra/"
 
 		# J
 		mkdir -p ~/j64-802-user/config
 		createlink "qtide.cfg" "j64-802-user/config/"
 		createlink "style.cfg" "j64-802-user/config/"
 
+		# Openbox
 		mkdir -p ~/.config/openbox
 		createlink "rc.xml" ".config/openbox/"
+		mkdir -p ~/.icons
+		createlink "ACYL_Icon_Theme_0.9.4" ".icons/"
+		sudo mkdir -p /usr/share/themes
+		createlink "BlackLime" "/usr/share/themes/" 1
+
+		# LXDM
+		sudo mkdir -p /usr/share/lxdm/themes
+		createlink "ABClarity" "/usr/share/lxdm/themes/" 1
+
+		# GVim
+		createlink "heroku.vim" "/.vim/colors/"
 	fi
 else
 	echo 'Usage: init.sh [--install | --links] [gui]'

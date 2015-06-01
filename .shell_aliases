@@ -16,8 +16,8 @@ alias l=' ls -CF'
 alias vi='vi -p'
 alias vim='vim -p'
 alias gvim='gvim -p'
-alias play_cd='vlc -f /media/cdrom0 &'
 alias colemak='setxkbmap us -variant colemak'
 alias dvorak='setxkbmap us -variant dvorak'
 alias qwerty="setxkbmap us; xmodmap -e 'clear Lock' -e 'keycode 66 = BackSpace'"
+alias esperanto="setxkbmap epo; xmodmap -e 'clear Lock' -e 'keycode 66 = BackSpace'"
 alias backLock="xmodmap -e 'clear Lock' -e 'keycode 66 = BackSpace'"

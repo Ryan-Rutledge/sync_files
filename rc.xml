@@ -40,7 +40,7 @@ following: 'Mouse' - where the mouse is, or
 'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>DarkRed</name>
+    <name>BlackLime</name>
     <titleLayout>DSLIMC</titleLayout>
     <!--
 available characters are NDSLIMC, each can occur at most once.
@@ -58,7 +58,7 @@ D: omnipresent (on all desktops).
       <name>Ubuntu</name>
       <size>10</size>
       <!-- font size in points -->
-      <weight>Normal</weight>
+      <weight>Bold</weight>
       <!-- 'bold' or 'normal' -->
       <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
@@ -283,7 +283,7 @@ cases. -->
     </keybind>
     <keybind key="W-f">
       <action name="Execute">
-        <command>spacefm</command>
+        <command>thunar</command>
         <startupnotify>
           <enabled>yes</enabled>
           <name>File Manager</name>
