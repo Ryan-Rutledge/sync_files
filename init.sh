@@ -68,6 +68,7 @@ if [[ ${1} == '--install' ]]; then
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
 			sudo apt-get install conky
 			sudo apt-get install chromium
+			sudo apt-get install feh
 			sudo apt-get install gimp
 			sudo apt-get install idle3
 			sudo apt-get install inkscape
@@ -75,6 +76,8 @@ if [[ ${1} == '--install' ]]; then
 			sudo apt-get install openbox
 			sudo apt-get install redshift
 			sudo apt-get install synapse
+			sudo apt-get install thunar
+			sudo apt-get install tint2
 			sudo apt-get install vim-gtk
 			sudo apt-get install xcompmgr
 		else
@@ -96,6 +99,7 @@ if [[ ${1} == '--install' ]]; then
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
 			sudo pacman -S conky
 			sudo pacman -S chromium
+			sudo pacman -S feh
 			sudo pacman -S gimp
 			sudo pacman -S gvim
 			sudo pacman -S inkscape
@@ -103,6 +107,8 @@ if [[ ${1} == '--install' ]]; then
 			sudo pacman -S openbox
 			sudo pacman -S redshift
 			sudo pacman -S synapse
+			sudo pacman -S thunar
+			sudo pacman -S tint2
 			sudo pacman -S xcompmgr
 		else
 			sudo pacman -S vim
