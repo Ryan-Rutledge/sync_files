@@ -67,7 +67,7 @@ if [[ ${1} == '--install' ]]; then
 
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
 			sudo apt-get install conky
-			sudo apt-get install chromium
+			sudo apt-get install chromium-browser
 			sudo apt-get install feh
 			sudo apt-get install gimp
 			sudo apt-get install idle3
