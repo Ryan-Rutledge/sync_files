@@ -67,6 +67,7 @@ if [[ ${1} == '--install' ]]; then
 
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
 			sudo apt-get install conky
+			sudo apt-get install chromium
 			sudo apt-get install gimp
 			sudo apt-get install idle3
 			sudo apt-get install inkscape
@@ -92,6 +93,7 @@ if [[ ${1} == '--install' ]]; then
 
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
 			sudo pacman -S conky
+			sudo pacman -S chromium
 			sudo pacman -S gimp
 			sudo pacman -S gvim
 			sudo pacman -S inkscape
