@@ -157,6 +157,7 @@ elif [[ ${1} == '--links' ]]; then
 		# Openbox
 		mkdir -p ~/.config/openbox
 		createlink "rc.xml" ".config/openbox/"
+		createlink "autostart" ".config/openbox/"
 		mkdir -p ~/.icons
 		createlink "ACYL_Icon_Theme_0.9.4" ".icons/"
 		sudo mkdir -p /usr/share/themes
