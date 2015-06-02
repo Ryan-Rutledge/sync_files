@@ -48,7 +48,7 @@ color6 666666
 TEXT
 ${color6}${font ubuntu:bold:size=11}Time${hr 2}
 ${font ubuntu:size=15}${color5}${alignc}${time %I:%M:%S %p}
-${font ubuntu:size=14}${color2}${execpi 300 cal | sed "s/\<[0-9]\{4\}\>\s*/&\${color1}\${font ubuntu mono:size=12}\n/" | sed "s/^/\${alignc}/g" | sed "s/\<$(date +%d)\>/\${color5}&\${color4}/"}
+${font ubuntu:size=14}${color2}${execpi 300 cal -h | sed "s/\<[0-9]\{4\}\>\s*/&\${color3}\${font ubuntu mono:size=12}\n/" | sed "s/^/\${alignc}/g" | sed "s/\<$(date +%-d)\>/\${color5}&\${color4}/"}
 
 ${color6}${font ubuntu:bold:size=11}System${hr 2}
 ${font}${color2}$sysname $kernel $alignr $machine
