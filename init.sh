@@ -75,7 +75,7 @@ if [[ ${1} == '--install' ]]; then
 			sudo apt-get install lxterminal
 			sudo apt-get install openbox
 			sudo apt-get install redshift
-			sudo apt-get install synapse
+			#sudo apt-get install synapse
 			sudo apt-get install thunar
 			sudo apt-get install tint2
 			sudo apt-get install ttf-ubuntu-font-family
