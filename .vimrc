@@ -96,7 +96,7 @@ nnoremap <leader>ss :set spell!<CR>
 
 	" Set up makeprg
 		" Bash
-			autocmd FileType sh nnoremap <F5> :!./"%:p"<CR>
+			autocmd FileType sh nnoremap <F5> :!bash "%:p"<CR>
 		" C
 			autocmd FileType c nnoremap <F5> :!gcc --o "%:p:r" "%:p" && "%:p:r.out"<CR>
 		" C++
