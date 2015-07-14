@@ -4,12 +4,12 @@ filetype plugin on
 au BufRead,BufNewFile bash-fc-* set filetype=sh
 
 " Colorscheme
-colorscheme heroku
+colorscheme monokai
 set background=dark
 
 highlight cursorLine   cterm=bold
 highlight CursorLineNr cterm=bold
-highlight cursorColumn cterm=bold
+highlight cursorColumn cterm=bold ctermbg=none
 
 " Add < and > to list of match characters
 set mps+=\<:\>

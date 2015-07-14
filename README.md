@@ -16,7 +16,8 @@ I am using [Any Color You Like](http://pobtott.deviantart.com/art/Any-Color-You-
 
 ## Vim
 
-The [g]vim colorscheme is [Heroku](https://github.com/pope/vim-heroku)
+The vim colorscheme is [monokai](https://github.com/crusoexia/vim-monokai)
+)
 
 ## Conky
 
