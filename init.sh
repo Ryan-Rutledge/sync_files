@@ -59,7 +59,6 @@ if [[ ${1} == '--install' ]]; then
 		sudo apt-get dist-upgrade
 
 		# Always install
-		sudo apt-get install cowsay
 		sudo apt-get install elinks
 		sudo apt-get install gpm
 		sudo apt-get install screen
@@ -67,20 +66,10 @@ if [[ ${1} == '--install' ]]; then
 
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
 			sudo apt-get install conky
-			sudo apt-get install chromium-browser
-			sudo apt-get install feh
-			sudo apt-get install gimp
 			sudo apt-get install idle3
-			sudo apt-get install inkscape
-			sudo apt-get install lxterminal
-			sudo apt-get install openbox
 			sudo apt-get install redshift
-			#sudo apt-get install synapse
-			sudo apt-get install thunar
-			sudo apt-get install tint2
 			sudo apt-get install ttf-ubuntu-font-family
 			sudo apt-get install vim-gtk
-			sudo apt-get install xcompmgr
 		else
 			sudo apt-get install python3
 			sudo apt-get install vim
@@ -90,7 +79,6 @@ if [[ ${1} == '--install' ]]; then
 		sudo pacman -Syu
 
 		# Always install
-		sudo pacman -S cowsay
 		sudo pacman -S elinks
 		sudo pacman -S gpm
 		sudo pacman -S python
@@ -98,25 +86,14 @@ if [[ ${1} == '--install' ]]; then
 		sudo pacman -S zsh && chsh -s $(which zsh)
 
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
-			sudo pacman -S conky
-			sudo pacman -S chromium
-			sudo pacman -S feh
-			sudo pacman -S gimp
 			sudo pacman -S gvim
-			sudo pacman -S inkscape
-			sudo pacman -S lxterminal
-			sudo pacman -S openbox
 			sudo pacman -S redshift
 			sudo pacman -S synapse
-			sudo pacman -S thunar
-			sudo pacman -S tint2
 			sudo pacman -S ttf-ubuntu-font-family
-			sudo pacman -S xcompmgr
 		else
 			sudo pacman -S vim
 		fi
 	fi
-
 # Generate symbolic links
 elif [[ ${1} == '--links' ]]; then
 	# zsh
@@ -133,9 +110,6 @@ elif [[ ${1} == '--links' ]]; then
 	# elinks
 	mkdir -p ~/.elinks/
 	createlink "elinks.conf" ".elinks/"
-	
-	# Miscellaneous
-	mkdir -p ~/extra
 
 	if [[ ${2} == 'gui' ||  ${2} == 'GUI' ]] ; then
 		# python
@@ -144,38 +118,9 @@ elif [[ ${1} == '--links' ]]; then
 		createlink "config-keys.cfg" ".idlerc/"
 		createlink "config-main.cfg" ".idlerc/"
 
-		# conky
-		mkdir -p ~/Scripts
-		createlink ".conkyrc"
-		createlink "deadbeefProgress.sh" "Scripts/"
-		createlink "getQuote.sh" "Scripts/"
-		createlink "quotes" "extra/"
-
 		# J
 		mkdir -p ~/j64-802-user/config
-		createlink "qtide.cfg" "j64-802-user/config/"
 		createlink "style.cfg" "j64-802-user/config/"
-
-		# lxterminal
-		mkdir -p ~/.config/lxterminal
-		createlink "lxterminal.conf" ".config/lxterminal/"
-
-		# tint2
-		mkdir -p ~/.config/tint2
-		createlink "tint2rc" ".config/tint2/"
-
-		# Openbox
-		mkdir -p ~/.config/openbox
-		createlink "rc.xml" ".config/openbox/"
-		createlink "autostart" ".config/openbox/"
-		mkdir -p ~/.icons
-		createlink "ACYL_Icon_Theme_0.9.4" ".icons/"
-		sudo mkdir -p /usr/share/themes
-		createlink "BlackLime" "/usr/share/themes/" 1
-
-		# LXDM
-		sudo mkdir -p /usr/share/lxdm/themes
-		createlink "ABClarity" "/usr/share/lxdm/themes/" 1
 	fi
 else
 	echo 'Usage: init.sh [--install | --links] [gui]'
