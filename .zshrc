@@ -74,5 +74,3 @@ function zle-keymap-select {
 zle -N zle-line-finish
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
-
-clear

@@ -41,10 +41,10 @@ function createlink {
 		# If permission was given to replace file
 		if [ $answer == 'y' -o $answer == 'Y' ]; then
 			# Remove file if it already exists
-			sudo rm -f "${newfile}"
+			rm -f "${newfile}"
 
 			# Create symbolic link
-			sudo ln -s "${oldfile}" "${newfile}" && echo -e "\e[0;32m${1} linked\e[0;00m"
+			ln -s "${oldfile}" "${newfile}" && echo -e "\e[0;32m${1} linked\e[0;00m"
 		else
 			echo -e "${2}${1} was not linked"
 		fi 
@@ -55,43 +55,43 @@ function createlink {
 if [[ ${1} == '--install' ]]; then
 	# If apt-get is installed
 	if [ -f "$(which apt-get 2> /dev/null)" ]; then
-		sudo apt-get update
-		sudo apt-get dist-upgrade
+		apt-get update
+		apt-get dist-upgrade
 
 		# Always install
-		sudo apt-get install elinks
-		sudo apt-get install gpm
-		sudo apt-get install screen
-		sudo apt-get install zsh && chsh -s $(which zsh)
+		apt-get install elinks
+		apt-get install gpm
+		apt-get install screen
+		apt-get install zsh && chsh -s $(which zsh)
 
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
-			sudo apt-get install conky
-			sudo apt-get install idle3
-			sudo apt-get install redshift
-			sudo apt-get install ttf-ubuntu-font-family
-			sudo apt-get install vim-gtk
+			apt-get install conky
+			apt-get install idle3
+			apt-get install redshift
+			apt-get install ttf-ubuntu-font-family
+			apt-get install vim-gtk
 		else
-			sudo apt-get install python3
-			sudo apt-get install vim
+			apt-get install python3
+			apt-get install vim
 		fi
 	# If pacman is installed
 	elif [ -f "$(which pacman 2> /dev/null)" ]; then
-		sudo pacman -Syu
+		pacman -Syu
 
 		# Always install
-		sudo pacman -S elinks
-		sudo pacman -S gpm
-		sudo pacman -S python
-		sudo pacman -S screen
-		sudo pacman -S zsh && chsh -s $(which zsh)
+		pacman -S elinks
+		pacman -S gpm
+		pacman -S python
+		pacman -S screen
+		pacman -S zsh && chsh -s $(which zsh)
 
 		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
-			sudo pacman -S gvim
-			sudo pacman -S redshift
-			sudo pacman -S synapse
-			sudo pacman -S ttf-ubuntu-font-family
+			pacman -S gvim
+			pacman -S redshift
+			pacman -S synapse
+			pacman -S ttf-ubuntu-font-family
 		else
-			sudo pacman -S vim
+			pacman -S vim
 		fi
 	fi
 # Generate symbolic links
