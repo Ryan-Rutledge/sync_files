@@ -34,7 +34,7 @@ if [ -f ~/.extra_aliases ]; then
 fi
 
 # Appearance ------------------------------------------------------------
-if [[ "$TERM" = "linux" ]]; then
+if [[ "$TERM" = "linux" && -s /usr/share/kbd/consolefonts/ter-u16b.psf.gz ]]; then
 	setfont /usr/share/kbd/consolefonts/ter-u16b.psf.gz
 fi
 
