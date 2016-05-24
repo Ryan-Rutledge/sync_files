@@ -78,8 +78,7 @@ nnoremap <leader>ss :set spell!<CR>
 	set shiftwidth=4
 	set softtabstop=4
 	set tabstop=4
-	set autoindent
-	set cindent
+	set smartindent
 
 " Searching
 	set incsearch
@@ -116,9 +115,9 @@ nnoremap <leader>ss :set spell!<CR>
 
 " Abbreviations
 	" Print current date
-	iabbrev <expr> DATE strftime("%d/%m/%Y")
+	iabbrev <expr> {DATE} strftime("%d/%m/%Y")
 	" Print current time
-	iabbrev <expr> TIME strftime("%H:%M:%S")
+	iabbrev <expr> {TIME} strftime("%H:%M:%S")
 
 " Key mappings
 	let mapleader = '\'
@@ -134,7 +133,12 @@ nnoremap <leader>ss :set spell!<CR>
 		set virtualedit=block
 	
 	" Yanking
+		" Yank to end of line
 		nnoremap Y y$
+
+		" Yank all
+		nnoremap <leader>y gg"+yG
+
 
 	" Use U as redo
 		nnoremap U <C-r>
@@ -163,9 +167,6 @@ nnoremap <leader>ss :set spell!<CR>
 
 	" Tabs
 		set tabpagemax=100
-			nnoremap <leader>to :tabonly<cr>
-			nnoremap <leader>tc :tabclose<cr>
-			nnoremap <leader>tm :tabmove 
 
 		" Next
 			nnoremap <leader>n :tabnext<CR>
@@ -189,10 +190,6 @@ nnoremap <leader>ss :set spell!<CR>
 		inoremap <Left> <C-X><C-P>
 		inoremap <Right> <C-X><C-N>
 
-" Macros
-	" Yank all
-	let @y='ggVG"+Y``'
-
 " Toggle between relative and normal line numbers
 function! NumberToggle()
 	if (&relativenumber == 1)
@@ -213,4 +210,19 @@ function Inc(...)
 	let result = g:i
 	let g:i += a:0 > 0 ? a:1 : 1
 	return result
+endfunction
+
+function Tab4(...)
+	set shiftwidth=4
+	set softtabstop=4
+	set tabstop=4
+	set noexpandtab
+endfunction
+
+function Tab2(...)
+	set shiftwidth=2
+	set softtabstop=2
+	set tabstop=2
+	set expandtab
+	retab
 endfunction
