@@ -1,9 +1,10 @@
 #!/bin/bash
 #
 # Installs programs and generates symbolic links to sync files
-# for debian-based Linux distros
-#
-# init.sh [--install | --links] [gui]
+# for debian and arch-based Linux distros
+
+arg="${1^^}"
+gui="${2^^}"
 
 pushd `dirname "${0}"` > /dev/null
 basedir=`pwd -P`
@@ -52,7 +53,7 @@ function createlink {
 }
 
 # Install programs
-if [[ ${1} == '--install' ]]; then
+if [[ ${arg} == '--INSTALL' ]]; then
 	# If apt-get is installed
 	if [ -f "$(which apt-get 2> /dev/null)" ]; then
 		apt-get update
@@ -64,7 +65,7 @@ if [[ ${1} == '--install' ]]; then
 		apt-get install screen
 		apt-get install zsh && chsh -s $(which zsh)
 
-		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
+		if [[ ${gui} == 'GUI' ]]; then
 			apt-get install conky
 			apt-get install idle3
 			apt-get install redshift
@@ -85,7 +86,7 @@ if [[ ${1} == '--install' ]]; then
 		pacman -S screen
 		pacman -S zsh && chsh -s $(which zsh)
 
-		if [[ ${2} == 'gui' || ${2} == 'GUI' ]]; then
+		if [[ ${gui} == 'GUI' ]]; then
 			pacman -S gvim
 			pacman -S redshift
 			pacman -S synapse
@@ -95,7 +96,7 @@ if [[ ${1} == '--install' ]]; then
 		fi
 	fi
 # Generate symbolic links
-elif [[ ${1} == '--links' ]]; then
+elif [[ ${arg} == '--LINKS' ]]; then
 	# zsh
 	createlink ".zshrc"
 
@@ -111,7 +112,7 @@ elif [[ ${1} == '--links' ]]; then
 	mkdir -p ~/.elinks/
 	createlink "elinks.conf" ".elinks/"
 
-	if [[ ${2} == 'gui' ||  ${2} == 'GUI' ]] ; then
+	if [[ ${gui} == 'GUI' ]] ; then
 		# python
 		mkdir -p ~/.idlerc
 		createlink "config-highlight.cfg" ".idlerc/"
@@ -123,5 +124,5 @@ elif [[ ${1} == '--links' ]]; then
 		createlink "style.cfg" "j64-802-user/config/"
 	fi
 else
-	echo 'Usage: init.sh [--install | --links] [gui]'
+	echo 'Usage: init.sh (--INSTALL | --LINKS) [GUI]'
 fi

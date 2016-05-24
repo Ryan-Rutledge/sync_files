@@ -95,20 +95,20 @@ nnoremap <leader>ss :set spell!<CR>
 
 	" Set up makeprg
 		" Bash
-			autocmd FileType sh nnoremap <F5> :!bash "%:p"<CR>
+			autocmd FileType sh nnoremap <F5> :!clear && bash "%:p"<CR>
 		" C
-			autocmd FileType c nnoremap <F5> :!gcc --o "%:p:r" "%:p" && "%:p:r.out"<CR>
+			autocmd FileType c nnoremap <F5> :!clear && gcc -o "%:p:r" "%:p" && "%:p:r"<CR>
 		" C++
-			autocmd FileType cpp nnoremap <F5> :!g++ --o "%:p:r" "%:p" && "%:p:r.out"<CR>
+			autocmd FileType cpp nnoremap <F5> :!clear && g++ -o "%:p:r" "%:p" && "%:p:r"<CR>
 		" HTML
 			autocmd FileType html nnoremap <F5> :!google-chrome "%:p"<CR>
 		" Java
-			autocmd FileType java nnoremap <F5> :!javac "%:p" && java -cp "%:p:h" "%:t:r"<CR>
+			autocmd FileType java nnoremap <F5> :!clear && javac "%:p" && java -cp "%:p:h" "%:t:r"<CR>
 		" Python
-			autocmd FileType python nnoremap <F5> :!python3 "%:p"<CR>
+			autocmd FileType python nnoremap <F5> :!clear && python3 "%:p"<CR>
 			autocmd FileType python set expandtab
 		" Sass
-			autocmd FileType sass nnoremap <F5> :!sass "%:p" > "%:p:r.css"<CR>
+			autocmd FileType sass nnoremap <F5> :!clear && sass "%:p" > "%:p:r.css"<CR>
 
 	" Disable automatic comments
 		 autocmd FileType * setlocal formatoptions=""
