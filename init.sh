@@ -60,13 +60,11 @@ if [[ ${arg} == '--INSTALL' ]]; then
 		apt-get dist-upgrade
 
 		# Always install
-		apt-get install elinks
 		apt-get install gpm
 		apt-get install screen
 		apt-get install zsh && chsh -s $(which zsh)
 
 		if [[ ${gui} == 'GUI' ]]; then
-			apt-get install conky
 			apt-get install idle3
 			apt-get install redshift
 			apt-get install ttf-ubuntu-font-family
@@ -80,7 +78,6 @@ if [[ ${arg} == '--INSTALL' ]]; then
 		pacman -Syu
 
 		# Always install
-		pacman -S elinks
 		pacman -S gpm
 		pacman -S python
 		pacman -S screen
@@ -107,10 +104,6 @@ elif [[ ${arg} == '--LINKS' ]]; then
 
 	# aliases
 	createlink ".shell_aliases"
-
-	# elinks
-	mkdir -p ~/.elinks/
-	createlink "elinks.conf" ".elinks/"
 
 	if [[ ${gui} == 'GUI' ]] ; then
 		# python
