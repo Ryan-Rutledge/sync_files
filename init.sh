@@ -113,10 +113,6 @@ elif [[ ${arg} == '--LINKS' ]]; then
 		createlink "config-highlight.cfg" ".idlerc/"
 		createlink "config-keys.cfg" ".idlerc/"
 		createlink "config-main.cfg" ".idlerc/"
-
-		# J
-		mkdir -p ~/j64-802-user/config
-		createlink "style.cfg" "j64-802-user/config/"
 	fi
 # Setup options
 elif [[ ${arg} == '--SETUP' ]]; then
