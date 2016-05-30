@@ -103,6 +103,9 @@ elif [[ ${arg} == '--LINKS' ]]; then
 	mkdir -p ~/.vim/colors
 	createlink "monokai.vim" ".vim/colors/"
 
+	# git
+	createlink ".gitconfig"
+
 	# aliases
 	createlink ".shell_aliases"
 
@@ -120,14 +123,10 @@ elif [[ ${arg} == '--LINKS' ]]; then
 # Setup options
 elif [[ ${arg} == '--SETUP' ]]; then
 
-	# git
-	git config --global user.email "ryan.rutledge.dev@gmail.com"
-	git config --global user.name "Ryan-Rutledge"
-
 	# zsh
 	if [ -f "$(which zsh 2> /dev/null)" ]; then
 		chsh -s $(which zsh)	
 	fi
 else
-	echo 'Usage: init.sh ( --INSTALL | --LINKS | --SETUP ) [ GUI ]'
+	echo 'Usage: init.sh ( --INSTALL | --LINKS) [ GUI ]'
 fi

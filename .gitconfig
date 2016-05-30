@@ -1,0 +1,7 @@
+[user]
+	name = Ryan-Rutledge
+	email = ryan.rutledge.dev@gmail.com
+[credential "https://github.com"]
+	username = Ryan-Rutledge
+[credential "https://bitbucket.org"]
+	username = Ryan-Rutledge
