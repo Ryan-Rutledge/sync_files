@@ -1,4 +1,4 @@
-all: # GUI setup
+gui: # GUI setup
 	sudo ./init.sh --INSTALL GUI && ./init.sh --LINKS GUI && ./init.sh --SETUP GUI
 
 cmd: # Commandline setup
