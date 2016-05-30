@@ -113,6 +113,9 @@ elif [[ ${arg} == '--LINKS' ]]; then
 		createlink "config-highlight.cfg" ".idlerc/"
 		createlink "config-keys.cfg" ".idlerc/"
 		createlink "config-main.cfg" ".idlerc/"
+
+		# uxterm
+		createlink ".Xresources"
 	fi
 # Setup options
 elif [[ ${arg} == '--SETUP' ]]; then

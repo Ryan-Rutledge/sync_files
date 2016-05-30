@@ -1,0 +1,5 @@
+UXTerm*locale: true
+UXTerm*faceName: ubuntu mono
+UXTerm*faceSize: 12
+UXTerm*background: #121212
+UXTerm*foreground: #e4e4e4
