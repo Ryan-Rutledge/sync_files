@@ -16,7 +16,7 @@ set mps+=\<:\>
 
 " General
 set backspace=indent,eol,start
-set guicursor=c-i:ver20,a:blinkon800-blinkoff200-blinkwait8000
+set guicursor=c-i:ver20,a:blinkon800-blinkoff200-blinkwait8000,r:hor10
 set guifont=Ubuntu\ Mono\ 11
 set lazyredraw
 set linebreak
