@@ -16,7 +16,7 @@ set mps+=\<:\>
 
 " General
 set backspace=indent,eol,start
-set guicursor+=a:blinkon0
+set guicursor=c-i:ver20,a:blinkon800-blinkoff200-blinkwait8000
 set guifont=Ubuntu\ Mono\ 11
 set lazyredraw
 set linebreak
@@ -30,7 +30,7 @@ set splitbelow
 set wildmenu
 set wildmode=longest:full,full
 set whichwrap=<,>,h,l
-set wrap
+set nowrap
 
 " statusline
 hi User1 ctermbg=black ctermfg=blue  guibg=#222222 guifg=#0088FF
