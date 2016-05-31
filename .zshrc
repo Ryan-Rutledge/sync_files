@@ -65,7 +65,7 @@ function zle-line-finish {
 
 # vim flag
 function zle-keymap-select {
-	VIM_PROMPT='%{$fg_bold[yellow]%}[COMMAND MODE] '
+	VIM_PROMPT='%{$fg_bold[yellow]%}[VI] '
 	RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%(2L.%{$fg_no_bold[cyan]%}%L%{$fg_bold[black]%}%)┤.%{$fg_bold[black]%}│)%{$fg_bold[white]%}%D{%T}%{$reset_color%}"
 
 	zle reset-prompt
