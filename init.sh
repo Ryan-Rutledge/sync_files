@@ -19,7 +19,7 @@ function message {
 }
 
 # Install programs
-if [[ ${arg} == '--INSTALL' ]]; then
+function init_install {
 	# If apt-get is installed
 	if [ -f "$(which apt-get 2> /dev/null)" ]; then
 		apt-get update
@@ -58,8 +58,10 @@ if [[ ${arg} == '--INSTALL' ]]; then
 			pacman -S vim
 		fi
 	fi
+}
+
 # Generate symbolic links
-elif [[ ${arg} == '--LINKS' ]]; then
+function init_links {
 	# Creates a symbolic link within the home directory
 	# $1	Name of file
 	# $2	Path (within home directory. Default value is home)
@@ -126,8 +128,10 @@ elif [[ ${arg} == '--LINKS' ]]; then
 		# uxterm
 		createlink ".Xresources"
 	fi
-# Setup options
-elif [[ ${arg} == '--SETUP' ]]; then
+}
+
+# Change settings
+function init_setup {
 	# zsh
 	if [ -f "$(which zsh 2> /dev/null)" ]; then
 		chsh -s $(which zsh) && message 0 "default shell set to zsh\n" || message 3 "failed to set default shell\n"
@@ -149,6 +153,14 @@ elif [[ ${arg} == '--SETUP' ]]; then
 			echo -e "\n# Set default editor\nexport EDITOR='${editor}'" >> ~/.profile && message 0 "EDITOR set to ${editor}\n" || message 2 "failed to set EDITOR\n"
 		fi
 	fi
+}
+
+if [[ ${arg} == '--INSTALL' ]]; then
+	init_install
+elif [[ ${arg} == '--LINKS' ]]; then
+	init_links
+elif [[ ${arg} == '--SETUP' ]]; then
+	init_setup
 else
 	echo 'Usage: init.sh ( --INSTALL | --LINKS | --SETUP ) [ GUI ]'
 fi
