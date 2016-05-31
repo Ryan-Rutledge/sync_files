@@ -10,9 +10,16 @@ pushd `dirname "${0}"` > /dev/null
 basedir=`pwd -P`
 popd > /dev/null
 
+# Prints a message to the user
+# $1	Message type { 0:success, 1:inform, 2:error }
+# $2	Text to print
+function message {
+	typecode=("\e[0;32m" "\033[0;33m" "\033[0;31m")
+	echo -en "${typecode[$1]}${2}\033[0;00m"
+}
+
 # Install programs
 if [[ ${arg} == '--INSTALL' ]]; then
-
 	# If apt-get is installed
 	if [ -f "$(which apt-get 2> /dev/null)" ]; then
 		apt-get update
@@ -53,7 +60,6 @@ if [[ ${arg} == '--INSTALL' ]]; then
 	fi
 # Generate symbolic links
 elif [[ ${arg} == '--LINKS' ]]; then
-
 	# Creates a symbolic link within the home directory
 	# $1	Name of file
 	# $2	Path (within home directory. Default value is home)
@@ -70,7 +76,7 @@ elif [[ ${arg} == '--LINKS' ]]; then
 
 		# If link already exists
 		if [ -h "${newfile}" ]; then
-			echo -e "\033[0;33msymbolic link ${newfile} already exists\033[0;00m"
+			message 1 "symbolic link ${newfile} already exists\n"
 		else
 			# Set default variable
 			local answer='y'
@@ -78,7 +84,7 @@ elif [[ ${arg} == '--LINKS' ]]; then
 			# If file already exists
 			if [ -e "${newfile}"  ]; then
 				# Ask user if it should be replaced
-				echo -en "\n\033[0;31m${newfile} already exists. Do you want to replace it? (y|n) \033[0;00m"
+				message 2 "${newfile} already exists. Do you want to replace it? (y|n) "
 				read answer
 			fi
 
@@ -88,7 +94,7 @@ elif [[ ${arg} == '--LINKS' ]]; then
 				rm -f "${newfile}"
 
 				# Create symbolic link
-				ln -s "${oldfile}" "${newfile}" && echo -e "\e[0;32m${1} linked\e[0;00m"
+				ln -s "${oldfile}" "${newfile}" && message 0 "${1} linked\n"
 			else
 				echo -e "${2}${1} was not linked"
 			fi 
@@ -122,11 +128,27 @@ elif [[ ${arg} == '--LINKS' ]]; then
 	fi
 # Setup options
 elif [[ ${arg} == '--SETUP' ]]; then
-
 	# zsh
 	if [ -f "$(which zsh 2> /dev/null)" ]; then
-		chsh -s $(which zsh)	
+		chsh -s $(which zsh) && message 0 "default shell set to zsh\n" || message 3 "failed to set default shell\n"
+	else
+		message 1 "zsh not found. Unable to set as default shell."
+	fi
+
+	# .profile
+	if [ -f ~/.profile ]; then
+		editor="vim"
+		# If EDITOR is already set correctly
+		if grep -q "export EDITOR=['\"]\?${editor}['\"]\?" ~/.profile ; then
+			message 1 "EDITOR already set to ${editor}\n"
+		# If EDITOR is set incorrectly
+		elif grep -q "export EDITOR=['\"]\?.*['\"]\?" ~/.profile ; then
+			message 2 "EDITOR is already set to a value other than ${editor}\n"
+		else
+			# Append export statement to .profile
+			echo -e "\n# Set default editor\nexport EDITOR='${editor}'" >> ~/.profile && message 0 "EDITOR set to ${editor}\n" || message 2 "failed to set EDITOR\n"
+		fi
 	fi
 else
-	echo 'Usage: init.sh ( --INSTALL | --LINKS) [ GUI ]'
+	echo 'Usage: init.sh ( --INSTALL | --LINKS | --SETUP ) [ GUI ]'
 fi
