@@ -105,6 +105,7 @@ function init_links {
 
 	# zsh
 	createlink ".zshrc"
+	createlink ".zshenv"
 
 	# vim
 	createlink ".vimrc"
@@ -139,20 +140,8 @@ function init_setup {
 		message 1 "zsh not found. Unable to set as default shell."
 	fi
 
-	# .profile
-	if [ -f ~/.profile ]; then
-		editor="vim"
-		# If EDITOR is already set correctly
-		if grep -q "export EDITOR=['\"]\?${editor}['\"]\?" ~/.profile ; then
-			message 1 "EDITOR already set to ${editor}\n"
-		# If EDITOR is set incorrectly
-		elif grep -q "export EDITOR=['\"]\?.*['\"]\?" ~/.profile ; then
-			message 2 "EDITOR is already set to a value other than ${editor}\n"
-		else
-			# Append export statement to .profile
-			echo -e "\n# Set default editor\nexport EDITOR='${editor}'" >> ~/.profile && message 0 "EDITOR set to ${editor}\n" || message 2 "failed to set EDITOR\n"
-		fi
-	fi
+	# bin
+	mkdir -p ~/opt/bin
 }
 
 if [[ ${arg} == '--INSTALL' ]]; then
