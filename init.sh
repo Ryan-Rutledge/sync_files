@@ -31,7 +31,8 @@ function init_install {
 		apt-get install zsh
 
 		if [[ ${gui} == 'GUI' ]]; then
-			apt-get install idle3
+			apt-get install i3
+			# apt-get install idle3
 			apt-get install redshift
 			apt-get install ttf-ubuntu-font-family
 			apt-get install vim-gtk
@@ -50,6 +51,7 @@ function init_install {
 		pacman -S zsh
 
 		if [[ ${gui} == 'GUI' ]]; then
+			pacman -S i3
 			pacman -S gvim
 			pacman -S redshift
 			pacman -S synapse
@@ -119,6 +121,10 @@ function init_links {
 	createlink ".shell_aliases"
 
 	if [[ ${gui} == 'GUI' ]]; then
+
+		# i3
+		mkdir -p ~/.i3
+		createlink "config" ".i3/"
 
 		# python
 		mkdir -p ~/.idlerc
