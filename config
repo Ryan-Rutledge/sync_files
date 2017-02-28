@@ -20,7 +20,7 @@ exec --no-startup-id uxterm -name scratchpad_terminal
 bindsym $mod+q kill
 
 # lock screen
-bindsym $mod+Shift+q exec i3lock -dI
+bindsym $mod+Shift+q exec i3lock -dI 10
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
