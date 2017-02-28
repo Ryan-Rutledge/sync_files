@@ -17,7 +17,10 @@ bindsym $mod+space [instance="scratchpad_terminal"] scratchpad show; move positi
 exec --no-startup-id uxterm -name scratchpad_terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
+
+# lock screen
+bindsym $mod+Shift+q exec i3lock -dI
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
