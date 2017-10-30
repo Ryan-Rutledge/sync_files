@@ -29,17 +29,19 @@ function init_install {
 		apt-get install gpm
 		apt-get install screen
 		apt-get install zsh
+		apt-get install pip3
+		apt-get install python3
+		pip3 install --user powerline-status
 
 		if [[ ${gui} == 'GUI' ]]; then
 			apt-get install i3
-			# apt-get install idle3
 			apt-get install redshift
 			apt-get install ttf-ubuntu-font-family
 			apt-get install vim-gtk
 		else
-			apt-get install python3
 			apt-get install vim
 		fi
+
 	# If pacman is installed
 	elif [ -f "$(which pacman 2> /dev/null)" ]; then
 		pacman -Syu
@@ -47,8 +49,10 @@ function init_install {
 		# Always install
 		pacman -S gpm
 		pacman -S python
+		pacman -S pip
 		pacman -S screen
 		pacman -S zsh
+		pip install --user powerline-status
 
 		if [[ ${gui} == 'GUI' ]]; then
 			pacman -S i3
@@ -60,6 +64,9 @@ function init_install {
 			pacman -S vim
 		fi
 	fi
+
+	# Vim plug
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 # Generate symbolic links

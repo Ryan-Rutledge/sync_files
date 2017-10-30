@@ -1,4 +1,23 @@
-set encoding=utf8
+" Plugins
+call plug#begin('~/.vim/plugged')
+	Plug 'tpope/vim-fugitive'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'airblade/vim-gitgutter'
+	Plug 'scrooloose/nerdtree'
+	Plug 'crusoexia/vim-monokai'
+call plug#end()
+
+" let g:airline_powerline_fonts=1
+let g:airline_detect_spell=1
+let g:airline_detect_spelllang=1
+let g:airline_symbols_ascii=1
+let g:airline_skip_empty_sections=1
+let g:airline_theme='onedark'
+
+set encoding=utf-8
+set term=screen-256color
+set t_ut=
 syntax on
 filetype plugin on
 au BufRead,BufNewFile bash-fc-* set filetype=sh
@@ -7,9 +26,10 @@ au BufRead,BufNewFile bash-fc-* set filetype=sh
 colorscheme monokai
 set background=dark
 
-highlight cursorLine   cterm=bold
-highlight CursorLineNr cterm=bold
-highlight cursorColumn cterm=bold ctermbg=none
+hi cursorLine   cterm=bold
+hi CursorLineNr cterm=bold
+hi cursorColumn cterm=bold
+hi Search cterm=NONE ctermfg=16 ctermbg=161
 
 " Add < and > to list of match characters
 set mps+=\<:\>
@@ -17,48 +37,20 @@ set mps+=\<:\>
 " General
 set backspace=indent,eol,start
 set guicursor=c-i:ver20,a:blinkon800-blinkoff200-blinkwait8000,r:hor10
-set guifont=Ubuntu\ Mono\ 11
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
 set lazyredraw
 set linebreak
 set mouse=a
-set number
-set showcmd
 set noshowmatch
+set nowrap
+set number
 set scrolloff=7
+set showcmd
 set splitright
 set splitbelow
 set wildmenu
 set wildmode=longest:full,full
 set whichwrap=<,>,h,l
-set nowrap
-
-" statusline
-hi User1 ctermbg=black ctermfg=blue  guibg=#222222 guifg=#0088FF
-hi User2 ctermbg=black ctermfg=green guibg=#222222 guifg=#00AA00
-hi User3 ctermbg=black ctermfg=gray  guibg=#222222 guifg=#CCCCCC
-hi User4 ctermbg=black ctermfg=red   guibg=#111111 guifg=#AA0000
-
-set noruler
-set laststatus=2
-
-set statusline=
-set statusline+=%2*
-set statusline+=%m
-set statusline+=%4*
-set statusline+=%-5.r
-set statusline+=%1*
-set statusline+=%F
-set statusline+=%2*
-set statusline+=\ %y\ 
-set statusline+=%1*
-set statusline+=%-6.B
-set statusline+=%3*
-set statusline+=:%-30.{@:}\ 
-set statusline+=%{@q}\ 
-set statusline+=%=
-set statusline+=%1*
-set statusline+=%4.c%V,\ 
-set statusline+=%2.l\ /\ %L
 
 " Swap files
 	" set backupdir=~/.vim/backups
@@ -75,10 +67,10 @@ nnoremap <leader>ss :set spell!<CR>
 	nnoremap <space> za
 
 " Indentation
-	set shiftwidth=4
-	set softtabstop=4
-	set tabstop=4
-	set smartindent
+	set autoindent
+	set cindent
+	set cinkeys-=0#
+	set indentkeys-=0#
 
 " Searching
 	set incsearch
@@ -111,7 +103,7 @@ nnoremap <leader>ss :set spell!<CR>
 
 	" Selection
 		set virtualedit=block
-	
+
 	" Yanking
 		" Yank to end of line
 		nnoremap Y y$
@@ -161,7 +153,7 @@ nnoremap <leader>ss :set spell!<CR>
 		" New
 			inoremap <C-t> <Esc>:tabnew<CR>
 			nnoremap <C-t> :tabnew<CR>
-	
+
 	" Special Characters
 		" Ctrl-k <letter><diagraph>
 		" Ctrl-v u<hex unicode value>
@@ -206,3 +198,5 @@ function Tab2(...)
 	set expandtab
 	retab
 endfunction
+
+call Tab4()
