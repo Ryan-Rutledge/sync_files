@@ -2,10 +2,9 @@
 call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
 	Plug 'airblade/vim-gitgutter'
 	Plug 'scrooloose/nerdtree'
-	Plug 'crusoexia/vim-monokai'
+	Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " let g:airline_powerline_fonts=1
@@ -23,7 +22,7 @@ filetype plugin on
 au BufRead,BufNewFile bash-fc-* set filetype=sh
 
 " Colorscheme
-colorscheme monokai
+colorscheme onedark
 set background=dark
 
 hi cursorLine   cterm=bold
