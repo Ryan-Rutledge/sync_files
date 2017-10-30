@@ -174,29 +174,20 @@ endfunc
 
 nnoremap <leader>l :call NumberToggle()<CR>
 
-" Increment replace
-" Add argument (can be negative, default 1) to global variable i.
-" Return value of i before change.
-" Usage : let i=0|%s//\=Inc(1, i)/g
-function Inc(...)
-	let result = g:i
-	let g:i += a:0 > 0 ? a:1 : 1
-	return result
-endfunction
-
-function Tab4(...)
+function! Tab4(...)
 	set shiftwidth=4
 	set softtabstop=4
 	set tabstop=4
 	set noexpandtab
 endfunction
+command! Tab4 call Tab4()
 
-function Tab2(...)
+function! Tab2(...)
 	set shiftwidth=2
 	set softtabstop=2
 	set tabstop=2
 	set expandtab
-	retab
 endfunction
+command! Tab2 call Tab2()
 
-call Tab4()
+Tab4
