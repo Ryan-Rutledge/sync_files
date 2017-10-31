@@ -28,7 +28,6 @@ set background=dark
 hi cursorLine   cterm=bold
 hi CursorLineNr cterm=bold
 hi cursorColumn cterm=bold
-hi Search cterm=NONE ctermfg=16 ctermbg=161
 
 " Add < and > to list of match characters
 set mps+=\<:\>

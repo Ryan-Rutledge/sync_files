@@ -118,8 +118,6 @@ function init_links {
 
 	# vim
 	createlink ".vimrc"
-	mkdir -p ~/.vim/colors
-	createlink "monokai.vim" ".vim/colors/"
 
 	# git
 	createlink ".gitconfig"
