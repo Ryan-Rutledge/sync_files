@@ -13,6 +13,7 @@ let g:airline_detect_spelllang=1
 let g:airline_symbols_ascii=1
 let g:airline_skip_empty_sections=1
 let g:airline_theme='onedark'
+let g:airline_section_y = airline#section#create_right(['%-2.B ', 'ffenc'])
 
 set encoding=utf-8
 set term=screen-256color
