@@ -3,8 +3,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-fugitive'
 	Plug 'vim-airline/vim-airline'
 	Plug 'airblade/vim-gitgutter'
-	Plug 'scrooloose/nerdtree'
 	Plug 'joshdick/onedark.vim'
+	Plug 'scrooloose/nerdtree', {'on': 'NERDTReeToggle' }
 call plug#end()
 
 " let g:airline_powerline_fonts=1

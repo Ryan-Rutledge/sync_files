@@ -22,51 +22,56 @@ function message {
 function init_install {
 	# If apt-get is installed
 	if [ -f "$(which apt-get 2> /dev/null)" ]; then
-		apt-get update
-		apt-get dist-upgrade
+		sudo -S apt-get update
+		sudo -S apt-get dist-upgrade
 
 		# Always install
-		apt-get install gpm
-		apt-get install screen
-		apt-get install zsh
-		apt-get install pip3
-		apt-get install python3
-		pip3 install --user powerline-status
+		sudo -S apt-get install gpm
+		sudo -S apt-get install screen
+		sudo -S apt-get install zsh
+		sudo -S apt-get install python3
+		sudo -S apt-get install python3-pip
+		sudo -S pip3 install --upgrade pip
+		sudo -S pip3 install --user powerline-status
 
 		if [[ ${gui} == 'GUI' ]]; then
-			apt-get install i3
-			apt-get install redshift
-			apt-get install ttf-ubuntu-font-family
-			apt-get install vim-gtk
+			sudo -S apt-get install i3
+			sudo -S apt-get install redshift
+			sudo -S apt-get install ttf-ubuntu-font-family
+			sudo -S apt-get install vim-gtk
 		else
-			apt-get install vim
+			sudo -S apt-get install vim
 		fi
 
 	# If pacman is installed
 	elif [ -f "$(which pacman 2> /dev/null)" ]; then
-		pacman -Syu
+		sudo -S pacman -Syu
 
 		# Always install
-		pacman -S gpm
-		pacman -S python
-		pacman -S pip
-		pacman -S screen
-		pacman -S zsh
-		pip install --user powerline-status
+		sudo -S pacman -S gpm
+		sudo -S pacman -S pip
+		sudo -S pacman -S screen
+		sudo -S pacman -S zsh
+		sudo -S pacman -S python
+		sudo -S pacman -S python-pip
+		sudo -S pip install --upgrade pip
+		sudo -S pip install --user powerline-status
 
 		if [[ ${gui} == 'GUI' ]]; then
-			pacman -S i3
-			pacman -S gvim
-			pacman -S redshift
-			pacman -S synapse
-			pacman -S ttf-ubuntu-font-family
+			sudo -S pacman -S i3
+			sudo -S pacman -S gvim
+			sudo -S pacman -S redshift
+			sudo -S pacman -S synapse
+			sudo -S pacman -S ttf-ubuntu-font-family
 		else
-			pacman -S vim
+			sudo -S pacman -S vim
 		fi
 	fi
 
 	# Vim plug
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	if [ ! -d ~/.vim/autoload/plug.vim ]; then
+		curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	fi
 }
 
 # Generate symbolic links
@@ -118,6 +123,7 @@ function init_links {
 
 	# vim
 	createlink ".vimrc"
+	createlink ".vimrc.vim"
 
 	# git
 	createlink ".gitconfig"
@@ -144,9 +150,9 @@ function init_links {
 
 # Change settings
 function init_setup {
-	# zsh
+	 zsh
 	if [ -f "$(which zsh 2> /dev/null)" ]; then
-		chsh -s $(which zsh) && message 0 "default shell set to zsh\n" || message 3 "failed to set default shell\n"
+		sudo -S chsh -s $(which zsh) && message 0 "default shell set to zsh\n" || message 3 "failed to set default shell\n"
 	else
 		message 1 "zsh not found. Unable to set as default shell."
 	fi
